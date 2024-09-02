@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: "/search/:qury",
+        path: "/search/:query",
         element: <SearchPage />,
       },
       {
