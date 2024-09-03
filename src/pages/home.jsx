@@ -7,9 +7,26 @@ import GifSearch from "../components/GifSearch";
 const Home = () => {
   const { gf, gifs, filter, setGifs} = GifState();
 
+  const loadMore = () => {
+    const fetchTrendigGIFs = async () => {
+      let { data } = await gf.trending({
+        limit: 20,
+        type: filter,
+        rating: "g",
+      });
+  
+      setGifs(data);
+    };
+  
+    useEffect(() => {
+      fetchTrendigGIFs();
+    }, [filter]);
+
+  }
+
   const fetchTrendigGIFs = async () => {
     const { data } = await gf.trending({
-      limit: 20,
+      limit: 30,
       type: filter,
       rating: "g",
     });
@@ -35,6 +52,9 @@ const Home = () => {
           return <Gif gif={gif} key={gif?.title} />;
         })}
       </div>
+      {/* <div className="pt-10 flex justify-center items-center">
+      <button className="bg-green-500 px-2 rounded-md">Load more..</button>
+      </div> */}
     </div>
   );
 };
