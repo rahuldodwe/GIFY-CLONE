@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <GifSearch />
+
       <img
         src="/banner.gif"
         alt="earth banner"
